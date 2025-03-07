@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>@yield('title') - SPK Kinerja Pegawai</title>
     <meta name="description" content="" />
@@ -25,6 +26,14 @@
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('template/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+
+    <!-- Datatables -->
+    <link rel="stylesheet" href="{{ asset('template/assets/vendor/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/vendor/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/assets/vendor/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+    <!-- Sweet Alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Page CSS -->
 
@@ -81,6 +90,24 @@
     <!-- Page JS -->
     <script src="{{ asset('template/assets/js/dashboards-analytics.js') }}"></script>
 
+    <!-- DataTables -->
+    <script src="{{ asset('template/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/jszip/jszip.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/pdfmake/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/pdfmake/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('template/assets/vendor/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+    <!-- Sweet Alert -->
+    <!-- <script src="{{ asset('template/assets/vendor/sweetalert/sweetalert.min.js') }}"></script> -->
+
+    @yield('js')
 </body>
 
 </html>

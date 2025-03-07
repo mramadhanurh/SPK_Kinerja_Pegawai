@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\StafController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,8 @@ Route::middleware(['auth', 'is_admin:2'])->group(function () {
 Route::middleware(['auth', 'is_admin:3'])->group(function () {
     // Home User
     Route::get('/user', [UserController::class, 'index'])->name('user');
+
+    // Data Pengguna
+    Route::resource('pengguna', PenggunaController::class);
 
 });
