@@ -56,9 +56,27 @@
             </a>
         </li>
 
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Master Data</span></li>
+
+        <li class="menu-item {{ request()->is('jabatan*') ? 'active' : '' }}">
+            <a href="/jabatan" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div data-i18n="Data Jabatan">Data Jabatan</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="cards-basic.html" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Basic">Data Pegawai</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengguna</span></li>
+
         <li class="menu-item {{ request()->is('pengguna*') ? 'active' : '' }}">
             <a href="/pengguna" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-crown"></i>
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
                 <div data-i18n="Data User">Data User</div>
             </a>
         </li>

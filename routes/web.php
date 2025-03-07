@@ -8,6 +8,7 @@ use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\StafController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\JabatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +47,8 @@ Route::middleware(['auth', 'is_admin:3'])->group(function () {
 
     // Data Pengguna
     Route::resource('pengguna', PenggunaController::class);
+
+    // Data Jabatan
+    Route::resource('jabatan', JabatanController::class);
 
 });
