@@ -65,6 +65,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->is('pangkat*') ? 'active' : '' }}">
+            <a href="/pangkat" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-spreadsheet"></i>
+                <div data-i18n="Data Pangkat">Data Pangkat</div>
+            </a>
+        </li>
+
         <li class="menu-item">
             <a href="cards-basic.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
