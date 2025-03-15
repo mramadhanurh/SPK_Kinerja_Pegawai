@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\PangkatController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,5 +55,8 @@ Route::middleware(['auth', 'is_admin:3'])->group(function () {
 
     // Data Pangkat
     Route::resource('pangkat', PangkatController::class);
+
+    // Data Pegawai
+    Route::resource('pegawai', PegawaiController::class);
 
 });

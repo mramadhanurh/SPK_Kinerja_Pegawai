@@ -72,8 +72,8 @@
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="cards-basic.html" class="menu-link">
+        <li class="menu-item {{ request()->is('pegawai*') ? 'active' : '' }}">
+            <a href="/pegawai" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
                 <div data-i18n="Basic">Data Pegawai</div>
             </a>
