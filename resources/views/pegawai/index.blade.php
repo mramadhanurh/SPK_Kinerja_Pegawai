@@ -75,7 +75,67 @@
     <script>
         $(document).ready(function() {
             $("#basic-datatables").DataTable();
-            
+
+            $('body').on('click', '#delete-confirm', function() {
+                let post_id = $(this).data('id');
+                let token = $("meta[name='csrf-token']").attr("content");
+
+                Swal.fire({
+                    title: "Apakah Anda yakin?",
+                    text: "Anda tidak akan bisa mengembalikan ini!",
+                    icon: "warning",
+                    buttons: {
+                        confirm: {
+                            text: "Ya, hapus!",
+                            className: "btn btn-success",
+                        },
+                        cancel: {
+                            visible: true,
+                            text: "Batal",
+                            className: "btn btn-danger",
+                        },
+                    },
+                }).then((result) => {
+                    if (result) {
+                        $.ajax({
+                            url: `/pegawai/${post_id}`,
+                            type: "DELETE",
+                            cache: false,
+                            data: {
+                                "_token": token
+                            },
+                            success: function(response) {
+                                Swal.fire({
+                                    title: "Terhapus!",
+                                    text: "Data berhasil dihapus.",
+                                    icon: "success",
+                                    buttons: {
+                                        confirm: {
+                                            className: "btn btn-success",
+                                        },
+                                    },
+                                });
+
+                                $(`#index_${post_id}`).remove();
+                            },
+                            error: function(xhr, status, error) {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: "Terjadi kesalahan: " + (xhr
+                                        .responseJSON.message || error),
+                                    icon: "error",
+                                    buttons: {
+                                        confirm: {
+                                            className: "btn btn-danger",
+                                        },
+                                    },
+                                });
+                            }
+                        });
+                    }
+                });
+            });
+
         });
     </script>
 @endsection

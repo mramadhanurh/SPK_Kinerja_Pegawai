@@ -75,7 +75,23 @@
         <li class="menu-item {{ request()->is('pegawai*') ? 'active' : '' }}">
             <a href="/pegawai" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Basic">Data Pegawai</div>
+                <div data-i18n="Data Pegawai">Data Pegawai</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Klasifikasi</span></li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-sitemap"></i>
+                <div data-i18n="Proses Klasifikasi">Proses Klasifikasi</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-objects-vertical-bottom"></i>
+                <div data-i18n="Analisa">Analisa</div>
             </a>
         </li>
 

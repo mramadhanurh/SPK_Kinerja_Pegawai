@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jabatan;
+use App\Models\Pangkat;
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +29,10 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        $pangkats = Pangkat::all();
+        $jabatans = Jabatan::all();
+
+        return view('pegawai.create', compact('pangkats', 'jabatans'));
     }
 
     /**
@@ -38,7 +43,33 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'nip' => 'required|string|max:18',
+            'id_pangkat' => 'required',
+            'id_jabatan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation errors',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $pegawai = Pegawai::create([
+            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'id_pangkat' => $request->id_pangkat,
+            'id_jabatan' => $request->id_jabatan,
+        ]);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data created successfully!',
+            'data' => $pegawai
+        ], 201);
     }
 
     /**
@@ -58,9 +89,20 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pegawai $pegawai)
+    public function edit($id)
     {
-        //
+        $pangkats = Pangkat::all();
+        $jabatans = Jabatan::all();
+        $pegawai = Pegawai::findOrFail($id);
+
+        if (!$pegawai) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pegawai not found'
+            ], 404);
+        }
+
+        return view('pegawai.edit', compact('pegawai', 'pangkats', 'jabatans'));
     }
 
     /**
@@ -70,9 +112,46 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pegawai $pegawai)
+    public function update(Request $request, $id)
     {
-        //
+        $pegawai = Pegawai::findOrFail($id);
+
+        if (!$pegawai) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pegawai not found'
+            ], 404);
+        }
+
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|max:255',
+            'nip' => 'required|string|max:18',
+            'id_pangkat' => 'required',
+            'id_jabatan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation errors',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+
+        $data = [
+            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'id_pangkat' => $request->id_pangkat,
+            'id_jabatan' => $request->id_jabatan,
+        ];
+
+        $pegawai->update($data);
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data updated successfully!',
+            'data' => $pegawai
+        ], 201);
     }
 
     /**
@@ -81,8 +160,22 @@ class PegawaiController extends Controller
      * @param  \App\Models\Pegawai  $pegawai
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pegawai $pegawai)
+    public function destroy($id)
     {
-        //
+        $pegawai = Pegawai::findOrFail($id);
+
+        if (!$pegawai) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pegawai not found'
+            ], 404);
+        }
+
+        $pegawai->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Data deleted successfully!'
+        ], 200);
     }
 }
