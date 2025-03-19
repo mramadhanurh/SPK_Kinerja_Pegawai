@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BobotController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Response;
@@ -58,5 +59,8 @@ Route::middleware(['auth', 'is_admin:3'])->group(function () {
 
     // Data Pegawai
     Route::resource('pegawai', PegawaiController::class);
+
+    // Data Bobot
+    Route::resource('bobot', BobotController::class);
 
 });

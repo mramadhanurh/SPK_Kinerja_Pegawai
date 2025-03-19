@@ -79,6 +79,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->is('bobot*') ? 'active' : '' }}">
+            <a href="/bobot" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Data Bobot">Data Bobot</div>
+            </a>
+        </li>
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Klasifikasi</span></li>
 
         <li class="menu-item">
