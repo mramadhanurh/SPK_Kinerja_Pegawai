@@ -86,6 +86,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->is('kriteria*') ? 'active' : '' }}">
+            <a href="/kriteria" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Data Kriteria">Data Kriteria</div>
+            </a>
+        </li>
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Klasifikasi</span></li>
 
         <li class="menu-item">

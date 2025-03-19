@@ -10,6 +10,7 @@ use App\Http\Controllers\StafController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\JabatanController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\PangkatController;
 use App\Http\Controllers\PegawaiController;
 
@@ -62,5 +63,8 @@ Route::middleware(['auth', 'is_admin:3'])->group(function () {
 
     // Data Bobot
     Route::resource('bobot', BobotController::class);
+
+    // Data Kriteria
+    Route::resource('kriteria', KriteriaController::class);
 
 });
