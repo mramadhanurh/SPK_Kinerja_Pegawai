@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manager;
+use App\Models\Himpunan;
+use App\Models\Jabatan;
+use App\Models\Kriteria;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class ManagerController extends Controller
@@ -10,7 +14,12 @@ class ManagerController extends Controller
     
     public function index()
     {
-        return view('manager');
+        $pegawais = Pegawai::count();
+        $jabatans = Jabatan::count();
+        $kriterias = Kriteria::count();
+        $himpunans = Himpunan::count();
+
+        return view('manager', compact('pegawais', 'jabatans', 'kriterias', 'himpunans'));
     }
 
     /**

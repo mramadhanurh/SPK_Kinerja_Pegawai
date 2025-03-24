@@ -78,7 +78,15 @@
                 </div>
             </div>
         </div>
+
+        <hr class="my-5" />
     </div>
+
+    <!-- / Content -->
+
+    @include('layouts.footer')
+
+    <div class="content-backdrop fade"></div>
 </div>
 
 <script>

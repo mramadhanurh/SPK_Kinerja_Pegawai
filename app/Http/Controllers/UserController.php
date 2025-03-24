@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Himpunan;
+use App\Models\Jabatan;
+use App\Models\Kriteria;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +17,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user');
+        $pegawais = Pegawai::count();
+        $jabatans = Jabatan::count();
+        $kriterias = Kriteria::count();
+        $himpunans = Himpunan::count();
+        
+        return view('user', compact('pegawais', 'jabatans', 'kriterias', 'himpunans'));
     }
 
     /**
