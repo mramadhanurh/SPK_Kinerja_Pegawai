@@ -7,8 +7,7 @@
             <script>
                 document.write(new Date().getFullYear());
             </script>
-            , made with ❤️ by
-            <a href="https://themeselection.com" target="_blank" class="footer-link fw-medium">ThemeSelection</a>
+            BADAN KESATUAN BANGSA DAN POLITIK PROV.PAPUA BARAT
         </div>
         <div class="d-none d-lg-inline-block">
             <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>

@@ -48,6 +48,36 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1">
+
+    @if (Auth::user()->is_admin === 3)
+        <!-- Dashboards -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Dashboards">Dashboards</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Pegawai</span></li>
+
+        <li class="menu-item {{ request()->is('pegawai*') ? 'active' : '' }}">
+            <a href="/pegawai" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-collection"></i>
+                <div data-i18n="Data Pegawai">Data Pegawai</div>
+            </a>
+        </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengguna</span></li>
+
+        <li class="menu-item {{ request()->is('pengguna*') ? 'active' : '' }}">
+            <a href="/pengguna" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-pin"></i>
+                <div data-i18n="Data User">Data User</div>
+            </a>
+        </li>
+
+    @elseif (Auth::user()->is_admin === 2)
+
         <!-- Dashboards -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link">
@@ -72,13 +102,6 @@
             </a>
         </li>
 
-        <li class="menu-item {{ request()->is('pegawai*') ? 'active' : '' }}">
-            <a href="/pegawai" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-collection"></i>
-                <div data-i18n="Data Pegawai">Data Pegawai</div>
-            </a>
-        </li>
-
         <li class="menu-item {{ request()->is('bobot*') ? 'active' : '' }}">
             <a href="/bobot" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-collection"></i>
@@ -95,28 +118,46 @@
 
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Klasifikasi</span></li>
 
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('himpunan*') ? 'active' : '' }}">
+            <a href="/himpunan" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-columns"></i>
+                <div data-i18n="Himpunan Kriteria">Himpunan Kriteria</div>
+            </a>
+        </li>
+
+        <li class="menu-item {{ request()->is('klasifikasi*') ? 'active' : '' }}">
+            <a href="/klasifikasi" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-sitemap"></i>
                 <div data-i18n="Proses Klasifikasi">Proses Klasifikasi</div>
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ request()->is('topsis*') ? 'active' : '' }}">
+            <a href="/topsis" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-objects-vertical-bottom"></i>
                 <div data-i18n="Analisa">Analisa</div>
             </a>
         </li>
+    
+    @elseif (Auth::user()->is_admin === 1)
 
-        <li class="menu-header small text-uppercase"><span class="menu-header-text">Pengguna</span></li>
-
-        <li class="menu-item {{ request()->is('pengguna*') ? 'active' : '' }}">
-            <a href="/pengguna" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user-pin"></i>
-                <div data-i18n="Data User">Data User</div>
+        <!-- Dashboards -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Dashboards">Dashboards</div>
             </a>
         </li>
+
+        <li class="menu-header small text-uppercase"><span class="menu-header-text">Laporan</span></li>
+
+        <li class="menu-item {{ request()->is('laporan*') ? 'active' : '' }}">
+            <a href="/laporan" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Laporan Kinerja">Laporan Kinerja</div>
+            </a>
+        </li>
+    @endif
     </ul>
 </aside>
 <!-- / Menu -->

@@ -12,4 +12,9 @@ class Kriteria extends Model
     protected $fillable = [
         'nama_kriteria', 'atribut', 'bobot_kriteria',
     ];
+
+    public function himpunans()
+    {
+        return $this->hasMany(Himpunan::class, 'id_kriteria');
+    }
 }
